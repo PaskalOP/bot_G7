@@ -30,7 +30,7 @@ public class BotTelegram extends TelegramLongPollingCommandBot {
             String receivedText = update.getMessage().getText();
 
             SendMessage sm = new SendMessage();
-            sm.setText("You just wrote " + receivedText);
+            sm.setText("Ви написали " + receivedText);
             sm.setChatId(update.getMessage().getChatId());
 
             try {
