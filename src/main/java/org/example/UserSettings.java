@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Data
-public class UserSettings {
+public  class UserSettings {
     String usedId;
     String alertTime = "09:00";
     Buttons bank = Buttons.ПРИВАТБАНК;

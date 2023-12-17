@@ -45,23 +45,6 @@ public class StartCommand extends BotCommand {
         sm.setReplyMarkup(menu);
 
 
-//        KeyboardButton rateButton = InlineKeyboardButton
-//                .builder()
-//                .text("КУРСИ_ВАЛЮT")
-//                .callbackData("КУРСИ_ВАЛЮT")
-//                .build();
-//        InlineKeyboardButton settingsButton = InlineKeyboardButton
-//                .builder()
-//                .text("НАЛАШТУВАННЯ")
-//                .callbackData("НАЛАШТУВАННЯ")
-//                .build();
-//
-//        InlineKeyboardMarkup ikm = InlineKeyboardMarkup.builder()
-//                .keyboard(Collections.singletonList(Arrays.asList(rateButton, settingsButton)))
-//                .build();
-//
-//        sm.setReplyMarkup(ikm);
-
         try {
             absSender.execute(sm);
         } catch (TelegramApiException e) {
