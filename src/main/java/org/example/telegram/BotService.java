@@ -5,7 +5,7 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 
 public class BotService {
-    BotTelegram bot;
+    private BotTelegram bot;
 
     public BotService  () {
         bot = new BotTelegram();
