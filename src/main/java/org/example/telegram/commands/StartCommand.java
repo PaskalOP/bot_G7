@@ -1,6 +1,7 @@
 package org.example.telegram.commands;
 
 import org.example.Buttons;
+import org.example.Settings;
 import org.telegram.telegrambots.extensions.bots.commandbot.commands.BotCommand;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Chat;
@@ -10,20 +11,12 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMar
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
-import org.telegram.telegrambots.meta.bots.AbsSender;
-import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
-
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
-public class StartCommand extends BotCommand {
-    public StartCommand() {
-        super("start", "start command will initiate currency bot");
-    }
-    @Override
-    public void execute(AbsSender absSender, User user, Chat chat, String[] strings) {
+public class StartCommand  {
+
+    public SendMessage executeStart (Chat chat) {
         String text = "Щоб отримати курс валют - натисніть кнопку 'КУРС ВАЛЮТ'. Щоб змінити налаштування - натисніть кнопку НАЛАШТУВАННЯ";
 
         SendMessage sm = new SendMessage();
@@ -32,8 +25,11 @@ public class StartCommand extends BotCommand {
 
 
         List<KeyboardButton> buttonsList = new ArrayList<>();
+        KeyboardButton rateCurrency = new KeyboardButton();
+        rateCurrency.setText("КУРСИ_ВАЛЮT");
+
         buttonsList.add(new KeyboardButton("КУРСИ_ВАЛЮT"));
-        buttonsList.add(new KeyboardButton("НАЛАШТУВАННЯ"));
+        buttonsList.add(new KeyboardButton("BANKS"));
 
 
         List<KeyboardRow> rows = new ArrayList<>();
@@ -43,12 +39,7 @@ public class StartCommand extends BotCommand {
         menu.setKeyboard(rows);
 
         sm.setReplyMarkup(menu);
+        return sm;
 
-
-        try {
-            absSender.execute(sm);
-        } catch (TelegramApiException e) {
-            System.out.println("Error");
-        }
     }
 }
