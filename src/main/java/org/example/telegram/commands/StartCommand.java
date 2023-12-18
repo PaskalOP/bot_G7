@@ -1,14 +1,7 @@
 package org.example.telegram.commands;
-
-import org.example.Buttons;
-import org.example.Settings;
-import org.telegram.telegrambots.extensions.bots.commandbot.commands.BotCommand;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Chat;
-import org.telegram.telegrambots.meta.api.objects.User;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 import java.util.ArrayList;
@@ -29,7 +22,7 @@ public class StartCommand  {
         rateCurrency.setText("КУРСИ_ВАЛЮT");
 
         buttonsList.add(new KeyboardButton("КУРСИ_ВАЛЮT"));
-        buttonsList.add(new KeyboardButton("BANKS"));
+        buttonsList.add(new KeyboardButton("НАЛАШТУВАННЯ"));
 
 
         List<KeyboardRow> rows = new ArrayList<>();

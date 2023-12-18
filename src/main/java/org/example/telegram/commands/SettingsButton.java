@@ -25,27 +25,33 @@ public class SettingsButton {
         sm.setText(text);
         sm.setChatId(chat.getId());
 
-        InlineKeyboardButton bankButton = InlineKeyboardButton
-                .builder()
-                .text("БАНКИ")
-                .callbackData("BANKS")
-                .build();
-        InlineKeyboardButton currencyButton = InlineKeyboardButton
-                .builder()
-                .text("Валюти")
-                .callbackData("/currency")
-                .build();
-        InlineKeyboardButton notificationButton = InlineKeyboardButton
-                .builder()
-                .text("Час сповіщень")
-                .callbackData("/timeNotification")
-                .build();
+        InlineKeyboardMarkup markupInline = new InlineKeyboardMarkup();
+        List<List<InlineKeyboardButton>> rowsInline = new ArrayList<>();
+        List<InlineKeyboardButton> rowInline = new ArrayList<>();
+        //  ці кнопки підтримують емоджі.
+        InlineKeyboardButton banksButton = new InlineKeyboardButton();
+        banksButton.setText("БАНКИ");
+        banksButton.setCallbackData("БАНКИ");
 
-        InlineKeyboardMarkup ikm = InlineKeyboardMarkup.builder()
-                .keyboard(Collections.singletonList(Arrays.asList(currencyButton , notificationButton,bankButton )))
-                .build();
 
-        sm.setReplyMarkup(ikm);
+
+        InlineKeyboardButton currencyButton = new InlineKeyboardButton();
+        currencyButton.setText("Валюти");
+        currencyButton.setCallbackData("ВАЛЮТИ");
+
+        InlineKeyboardButton notificButton = new InlineKeyboardButton();
+        notificButton.setText("Час сповіщень");
+        notificButton.setCallbackData("ЧАС_СПОВІЩЕНЬ");
+
+        rowInline.add(banksButton );
+        rowInline.add(currencyButton );
+        rowInline.add(notificButton );
+
+        rowsInline.add(rowInline);
+
+        markupInline.setKeyboard(rowsInline);
+        sm.setReplyMarkup(markupInline);
+
         return sm;
 
     }

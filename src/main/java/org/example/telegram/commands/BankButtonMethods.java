@@ -30,12 +30,12 @@ public class BankButtonMethods {
 
 
         InlineKeyboardButton monoBank = new InlineKeyboardButton();
-        privatBank.setText("Монобанк");
-        privatBank.setCallbackData("MONO");
+        monoBank.setText("Монобанк");
+        monoBank.setCallbackData("MONO");
 
         InlineKeyboardButton nationalBank = new InlineKeyboardButton();
-        privatBank.setText("НБУ");
-        privatBank.setCallbackData("NATIONAL");
+        nationalBank.setText("НБУ");
+        nationalBank.setCallbackData("NATIONAL");
 
         rowInline.add(privatBank);
         rowInline.add(monoBank );

@@ -40,7 +40,7 @@ public class BotTelegram extends TelegramLongPollingCommandBot {
                 String data = update.getCallbackQuery().getData();
 
 
-                if (data.equals("BANKS") ){
+                if (data.equals("БАНКИ") ){
                     BankButtonMethods banks = new BankButtonMethods();
                     Long chatId = update.getCallbackQuery().getMessage().getChatId();
                     SendMessage sm = banks.sendMassageButton (chatId);
@@ -64,7 +64,7 @@ public class BotTelegram extends TelegramLongPollingCommandBot {
                         System.out.println("Error");
                     }
                 }
-                if (update.getMessage().getText().equals("BANKS")){
+                if (update.getMessage().getText().equals("НАЛАШТУВАННЯ")){
                     SettingsButton settings = new SettingsButton();
                     SendMessage sm = settings.executeSettings(update.getMessage().getChat());
                     try {
