@@ -10,7 +10,7 @@ import java.util.List;
 
 public class ChooseSettings {
 
-    public SendMessage executeSettings (Chat chat) {
+    public SendMessage executeSettings(Chat chat) {
         String text = "налаштуйте необхідні дані";
 
         SendMessage sm = new SendMessage();
@@ -19,27 +19,36 @@ public class ChooseSettings {
 
         InlineKeyboardMarkup markupInline = new InlineKeyboardMarkup();
         List<List<InlineKeyboardButton>> rowsInline = new ArrayList<>();
-        List<InlineKeyboardButton> rowInline = new ArrayList<>();
+
+        List<InlineKeyboardButton> rowInline1 = new ArrayList<>();
         //  ці кнопки підтримують емоджі.
         InlineKeyboardButton banksButton = new InlineKeyboardButton();
-        banksButton.setText("БАНКИ");
-        banksButton.setCallbackData("БАНКИ");
-
+        banksButton.setText("Банки");
+        banksButton.setCallbackData("BANKS");
 
 
         InlineKeyboardButton currencyButton = new InlineKeyboardButton();
         currencyButton.setText("Валюти");
-        currencyButton.setCallbackData("ВАЛЮТИ");
+        currencyButton.setCallbackData("CURRENCIES");
+
+        rowInline1.add(banksButton);
+        rowInline1.add(currencyButton);
+
+        List<InlineKeyboardButton> rowInline2 = new ArrayList<>();
 
         InlineKeyboardButton notificButton = new InlineKeyboardButton();
         notificButton.setText("Час сповіщень");
-        notificButton.setCallbackData("ЧАС_СПОВІЩЕНЬ");
+        notificButton.setCallbackData("ALARM_TIME");
 
-        rowInline.add(banksButton );
-        rowInline.add(currencyButton );
-        rowInline.add(notificButton );
+        InlineKeyboardButton countDigitsAfterComma = new InlineKeyboardButton();
+        countDigitsAfterComma.setText("Кількість знаків після коми");
+        countDigitsAfterComma.setCallbackData("DIGITS_COMMA");
 
-        rowsInline.add(rowInline);
+        rowInline2.add(notificButton);
+        rowInline2.add(countDigitsAfterComma);
+
+        rowsInline.add(rowInline1);
+        rowsInline.add(rowInline2);
 
         markupInline.setKeyboard(rowsInline);
         sm.setReplyMarkup(markupInline);

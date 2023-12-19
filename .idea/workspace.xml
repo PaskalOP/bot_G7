@@ -4,15 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e4c05a7e-ec5b-449b-bdd9-d08fb935abac" name="Changes" comment="SettingsButton + BankButtonMethods">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/commands/RateDataPrint.java" afterDir="false" />
+    <list default="true" id="e4c05a7e-ec5b-449b-bdd9-d08fb935abac" name="Changes" comment="someButtons">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/buttons/ChooseBank.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/buttons/ChooseCountDigit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/buttons/ChooseCurrency.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/buttons/ChooseNitification.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/buttons/ChooseSettings.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/buttons/RateData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/commands/ChooseCurrency.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/commands/ChooseDigitsAfterComma.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/commands/ChooseSetAlarmTime.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/UserSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/UserSettings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/currency/CurrencyServiceDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/currency/CurrencyServiceDemo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/telegram/BotTelegram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/BotTelegram.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/telegram/commands/BankButtonMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/commands/ChooseBank.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/telegram/commands/SettingsButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/commands/ChooseSettings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/telegram/commands/StartCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/commands/StartCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/telegram/commands/ChooseSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/commands/ChooseSettings.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,15 +169,7 @@
       <option name="project" value="LOCAL" />
       <updated>1702927585653</updated>
     </task>
-    <task id="LOCAL-00010" summary="SettingsButton + BankButtonMethods">
-      <option name="closed" value="true" />
-      <created>1702930134449</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1702930134449</updated>
-    </task>
-    <option name="localTasksCounter" value="11" />
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -226,16 +223,30 @@
     <MESSAGE value="command start" />
     <MESSAGE value="add class start" />
     <MESSAGE value="someButtons" />
-    <MESSAGE value="SettingsButton + BankButtonMethods" />
-    <option name="LAST_COMMIT_MESSAGE" value="SettingsButton + BankButtonMethods" />
+    <option name="LAST_COMMIT_MESSAGE" value="someButtons" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/telegram/BotTelegram.java</url>
-          <line>87</line>
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/telegram/commands/ChooseSettings.java</url>
+          <line>42</line>
           <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/telegram/BotTelegram.java</url>
+          <line>107</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/telegram/BotTelegram.java</url>
+          <line>52</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/telegram/commands/ChooseCurrency.java</url>
+          <line>36</line>
+          <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

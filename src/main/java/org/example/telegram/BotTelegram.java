@@ -3,10 +3,7 @@ package org.example.telegram;
 
 import org.example.Buttons;
 import org.example.UserSettings;
-import org.example.telegram.commands.ChooseBank;
-import org.example.telegram.commands.ChooseSettings;
-import org.example.telegram.commands.RateDataPrint;
-import org.example.telegram.commands.StartCommand;
+import org.example.telegram.commands.*;
 import org.telegram.telegrambots.extensions.bots.commandbot.TelegramLongPollingCommandBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
@@ -28,22 +25,23 @@ public class BotTelegram extends TelegramLongPollingCommandBot {
     public String getBotToken() {
         return BotLogin.TOKEN;
     }
+
     @Override
-    public void processNonCommandUpdate(Update update){
+    public void processNonCommandUpdate(Update update) {
 
     }
 
     @Override
     public void onUpdatesReceived(List<Update> updates) {
-        for (Update update:updates) {
+        for (Update update : updates) {
             if (update.hasCallbackQuery()) {
                 String data = update.getCallbackQuery().getData();
 
 
-                if (data.equals("БАНКИ") ){
+                if (data.equals("BANKS")) {
                     ChooseBank banks = new ChooseBank();
                     Long chatId = update.getCallbackQuery().getMessage().getChatId();
-                    SendMessage sm = banks.sendMassageButton (chatId);
+                    SendMessage sm = banks.sendMassageButton(chatId);
 
 
                     try {
@@ -52,15 +50,48 @@ public class BotTelegram extends TelegramLongPollingCommandBot {
                         System.out.println("Error");
                     }
                 }
+                if (data.equals("CURRENCIES")) {
+                    ChooseCurrency currencyButtons = new ChooseCurrency();
+                    Long chatId = update.getCallbackQuery().getMessage().getChatId();
+                    SendMessage sm = currencyButtons.sendCurrencyButtons(chatId);
 
-                if (data.equals("MONO")){
+                    try {
+                        execute(sm);
+                    } catch (TelegramApiException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+                if (data.equals("ALARM_TIME")) {
+                    ChooseSetAlarmTime setAlarmTimeButtons = new ChooseSetAlarmTime();
+                    Long chatId = update.getCallbackQuery().getMessage().getChatId();
+                    SendMessage sm = setAlarmTimeButtons.sendAlarmTimeOptions(chatId);
+
+                    try {
+                        execute(sm);
+                    } catch (TelegramApiException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+                if (data.equals("DIGITS_COMMA")) {
+                    ChooseDigitsAfterComma chooseDigitsAfterComma = new ChooseDigitsAfterComma();
+                    Long chatId = update.getCallbackQuery().getMessage().getChatId();
+                    SendMessage sm = chooseDigitsAfterComma.sendDigitsAfterCommaButton(chatId);
+
+                    try {
+                        execute(sm);
+                    } catch (TelegramApiException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+
+                if (data.equals("MONO")) {
                     settings.setBank(Buttons.МОНОБАНК);
                 }
 
             }
-            if (update.hasMessage()){
-                if(update.getMessage().getText().equals("/start")){
-                   StartCommand start = new StartCommand();
+            if (update.hasMessage()) {
+                if (update.getMessage().getText().equals("/start")) {
+                    StartCommand start = new StartCommand();
                     settings = new UserSettings(update.getMessage().getChat());
                     SendMessage sm = start.executeStart(update.getMessage().getChat());
                     try {
@@ -72,7 +103,7 @@ public class BotTelegram extends TelegramLongPollingCommandBot {
                     System.out.println(settings.getCurrencies());
 
                 }
-                if (update.getMessage().getText().equals("НАЛАШТУВАННЯ")){
+                if (update.getMessage().getText().equals("НАЛАШТУВАННЯ")) {
                     ChooseSettings settings = new ChooseSettings();
                     SendMessage sm = settings.executeSettings(update.getMessage().getChat());
                     try {
@@ -81,9 +112,9 @@ public class BotTelegram extends TelegramLongPollingCommandBot {
                         System.out.println("Error");
                     }
                 }
-                if (update.getMessage().getText().equals("КУРСИ ВАЛЮT")){
+                if (update.getMessage().getText().equals("КУРСИ ВАЛЮT")) {
                     RateDataPrint message = new RateDataPrint();
-                    SendMessage sm = message.printRate(settings,update.getMessage().getChat());
+                    SendMessage sm = message.printRate(settings, update.getMessage().getChat());
 
                     try {
                         execute(sm);
