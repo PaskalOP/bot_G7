@@ -1,4 +1,6 @@
 package org.example.telegram.commands;
+import org.example.Buttons;
+import org.example.UserSettings;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Chat;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
@@ -10,6 +12,7 @@ import java.util.List;
 public class StartCommand  {
 
     public SendMessage executeStart (Chat chat) {
+
         String text = "Щоб отримати курс валют - натисніть кнопку 'КУРС ВАЛЮТ'. Щоб змінити налаштування - натисніть кнопку НАЛАШТУВАННЯ";
 
         SendMessage sm = new SendMessage();
@@ -18,10 +21,8 @@ public class StartCommand  {
 
 
         List<KeyboardButton> buttonsList = new ArrayList<>();
-        KeyboardButton rateCurrency = new KeyboardButton();
-        rateCurrency.setText("КУРСИ_ВАЛЮT");
 
-        buttonsList.add(new KeyboardButton("КУРСИ_ВАЛЮT"));
+        buttonsList.add(new KeyboardButton("КУРСИ ВАЛЮT"));
         buttonsList.add(new KeyboardButton("НАЛАШТУВАННЯ"));
 
 
