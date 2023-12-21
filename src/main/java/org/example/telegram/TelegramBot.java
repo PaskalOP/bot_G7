@@ -1,16 +1,24 @@
 package org.example.telegram;
 
-import org.example.Buttons;import org.example.UserSettings;
-import org.example.telegram.commands.*;import org.example.telegram.sendNotification.SendNotification;
-import org.telegram.telegrambots.extensions.bots.commandbot.TelegramLongPollingCommandBot;import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import org.telegram.telegrambots.meta.api.objects.Update;import org.telegram.telegrambots.meta.bots.AbsSender;
+
+import org.example.UserSettings;
+import org.example.telegram.buttons.*;
+
+import org.example.telegram.sendNotification.SendNotification;
+import org.telegram.telegrambots.extensions.bots.commandbot.TelegramLongPollingCommandBot;
+import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.objects.Update;
+import org.telegram.telegrambots.meta.bots.AbsSender;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
-import java.lang.invoke.SwitchPoint;import java.util.Arrays;
+import java.lang.invoke.SwitchPoint;
+import java.util.Arrays;
 import java.util.List;
 
 public class TelegramBot extends TelegramLongPollingCommandBot {
     //Налаштування створюються при запуску команди старт. І передаються в поле
     // для використання з різних точок класу    private UserSettings settings;
+    private UserSettings settings;
+
     @Override
     public String getBotUsername() {        return BotLogin.NAME;
     }
@@ -19,8 +27,7 @@ public class TelegramBot extends TelegramLongPollingCommandBot {
     }
     @Override    public void processNonCommandUpdate(Update update) {
     }
-    Цикалюк Влад, [21 груд. 2023 р., 22:35:39]:
-            ...    @Override
+     @Override
     public void onUpdatesReceived(List<Update> updates) {
         for (Update update : updates) {
             if (update.hasMessage()) {
@@ -122,7 +129,7 @@ public class TelegramBot extends TelegramLongPollingCommandBot {
                         settings.setNumbersAfterPoint(4);
                         break;
                     case "9":
-                        settings.setAlertTime(9);
+                        settings.setAlertTime("9");
                         SendNotification.scheduledNotification(20);
                         break;
                 }

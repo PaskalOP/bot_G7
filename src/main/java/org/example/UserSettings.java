@@ -1,6 +1,7 @@
 package org.example;
 
 import lombok.Data;
+import org.example.telegram.buttons.Buttons;
 import org.telegram.telegrambots.meta.api.objects.Chat;
 
 import java.util.ArrayList;

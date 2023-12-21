@@ -1,5 +1,4 @@
 package org.example.telegram.sendNotification;
-import org.example.telegram.commands.RateDataPrint;
 import org.telegram.telegrambots.meta.bots.AbsSender;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
