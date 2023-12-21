@@ -5,10 +5,10 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 
 public class BotService {
-    private BotTelegram bot;
+    private TelegramBot  bot;
 
     public BotService  () {
-        bot = new BotTelegram();
+        bot = new TelegramBot ();
         try {
             TelegramBotsApi telegramBotsApi = new TelegramBotsApi(DefaultBotSession.class);
             telegramBotsApi.registerBot(bot);
