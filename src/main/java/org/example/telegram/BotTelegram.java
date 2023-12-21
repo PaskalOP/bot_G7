@@ -4,11 +4,15 @@ package org.example.telegram;
 import org.example.Buttons;
 import org.example.UserSettings;
 import org.example.telegram.commands.*;
+import org.example.telegram.sendNotification.SendNotification;
 import org.telegram.telegrambots.extensions.bots.commandbot.TelegramLongPollingCommandBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
+import org.telegram.telegrambots.meta.bots.AbsSender;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
+import java.lang.invoke.SwitchPoint;
+import java.util.Arrays;
 import java.util.List;
 
 public class BotTelegram extends TelegramLongPollingCommandBot {
@@ -34,68 +38,12 @@ public class BotTelegram extends TelegramLongPollingCommandBot {
     @Override
     public void onUpdatesReceived(List<Update> updates) {
         for (Update update : updates) {
-            if (update.hasCallbackQuery()) {
-                String data = update.getCallbackQuery().getData();
-
-
-                if (data.equals("BANKS")) {
-                    ChooseBank banks = new ChooseBank();
-                    Long chatId = update.getCallbackQuery().getMessage().getChatId();
-                    SendMessage sm = banks.sendMassageButton(chatId);
-
-
-                    try {
-                        execute(sm);
-                    } catch (TelegramApiException e) {
-                        System.out.println("Error");
-                    }
-                }
-                if (data.equals("CURRENCIES")) {
-                    ChooseCurrency currencyButtons = new ChooseCurrency();
-                    Long chatId = update.getCallbackQuery().getMessage().getChatId();
-                    SendMessage sm = currencyButtons.sendCurrencyButtons(chatId);
-
-                    try {
-                        execute(sm);
-                    } catch (TelegramApiException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
-                if (data.equals("ALARM_TIME")) {
-                    ChooseSetAlarmTime setAlarmTimeButtons = new ChooseSetAlarmTime();
-                    Long chatId = update.getCallbackQuery().getMessage().getChatId();
-                    SendMessage sm = setAlarmTimeButtons.sendAlarmTimeOptions(chatId);
-
-                    try {
-                        execute(sm);
-                    } catch (TelegramApiException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
-                if (data.equals("DIGITS_COMMA")) {
-                    ChooseDigitsAfterComma chooseDigitsAfterComma = new ChooseDigitsAfterComma();
-                    Long chatId = update.getCallbackQuery().getMessage().getChatId();
-                    SendMessage sm = chooseDigitsAfterComma.sendDigitsAfterCommaButton(chatId);
-
-                    try {
-                        execute(sm);
-                    } catch (TelegramApiException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
-
-                if (data.equals("MONO")) {
-                    settings.setBank(Buttons.МОНОБАНК);
-                }
-
-            }
             if (update.hasMessage()) {
                 if (update.getMessage().getText().equals("/start")) {
                     StartCommand start = new StartCommand();
                     settings = new UserSettings(update.getMessage().getChat());
-                    SendMessage sm = start.executeStart(update.getMessage().getChat());
                     try {
-                        execute(sm);
+                        execute(start.executeStart(update.getMessage().getChat()));
                     } catch (TelegramApiException e) {
                         System.out.println("Error");
                     }
@@ -105,28 +53,103 @@ public class BotTelegram extends TelegramLongPollingCommandBot {
                 }
                 if (update.getMessage().getText().equals("НАЛАШТУВАННЯ")) {
                     ChooseSettings settings = new ChooseSettings();
-                    SendMessage sm = settings.executeSettings(update.getMessage().getChat());
                     try {
-                        execute(sm);
+                        execute(settings.executeSettings(update.getMessage().getChat()));
                     } catch (TelegramApiException e) {
                         System.out.println("Error");
                     }
                 }
                 if (update.getMessage().getText().equals("КУРСИ ВАЛЮT")) {
                     RateDataPrint message = new RateDataPrint();
-                    SendMessage sm = message.printRate(settings, update.getMessage().getChat());
-
                     try {
-                        execute(sm);
+                        execute(message.printRate(settings, update.getMessage().getChat()));
                     } catch (TelegramApiException e) {
                         System.out.println("Error");
                     }
                 }
+            }
+            if (update.hasCallbackQuery()){
+            String data = update.getCallbackQuery().getData();
+            Long chatId =update.getCallbackQuery().getMessage().getChatId();
+            switch(data){
+                case "BANKS":
+                    ChooseBank banks = new ChooseBank();
+                    try {
+                        execute(banks.sendMassageButton(chatId));
+                    } catch (TelegramApiException e) {
+                        System.out.println("Error");
+                    }break;
 
+                case "CURRENCIES":
+                    ChooseCurrency currencyButtons = new ChooseCurrency();
+                    try {
+                        execute(currencyButtons.sendCurrencyButtons(chatId));
+                    } catch (TelegramApiException e) {
+                        throw new RuntimeException(e);
+                    }break;
 
+                case "ALARM_TIME":
+                    ChooseSetAlarmTime setAlarmTimeButtons = new ChooseSetAlarmTime();
+                    try {
+                        execute(setAlarmTimeButtons.sendAlarmTimeOptions(chatId));
+                    } catch (TelegramApiException e) {
+                        throw new RuntimeException(e);
+                    }break;
+
+                case "DIGITS_COMMA":
+                    ChooseDigitsAfterComma chooseDigitsAfterComma = new ChooseDigitsAfterComma();
+                    try {
+                        execute(chooseDigitsAfterComma.sendDigitsAfterCommaButton(chatId));
+                    } catch (TelegramApiException e) {
+                        throw new RuntimeException(e);
+                    }break;
+
+                case "MONO":
+                    settings.setBank(Buttons.МОНОБАНК);
+                    SendMessage sm = new SendMessage();
+                    sm.setChatId(chatId);
+                    sm.setText("Му-ха-ха... Тепер ти на темій стороні котиків!");
+                    try {
+                        execute(sm);
+                    } catch (TelegramApiException e) {
+                        throw new RuntimeException(e);
+                    }
+                    break;
+                case "PRIVAT":
+                    settings.setBank(Buttons.ПРИВАТБАНК);
+                    break;
+                case "NATIONAL":
+                    settings.setBank(Buttons.НБУ);
+                    break;
+                case "EUR":
+                    settings.setCurrencies( Arrays.asList(Buttons.EUR));
+                    break;
+                case "USD":
+                    settings.setCurrencies( Arrays.asList(Buttons.USD));
+                    break;
+                case "2":
+                    settings.setNumbersAfterPoint(2);
+                    break;
+                case "3":
+                    settings.setNumbersAfterPoint(3);
+                    break;
+                case "4":
+                    settings.setNumbersAfterPoint(4);
+                    break;
+                case "9":
+                    settings.setAlertTime(9);
+
+                    SendNotification.scheduledNotification(20);
+                    break;
+            }
             }
 
         }
-
     }
+
+
+
+
+
+
 }

@@ -15,7 +15,7 @@ public class RateDataPrint {
         String getRate = currencyService.getRate(userRequest);
 
         SendMessage sendMessage = new SendMessage();
-        sendMessage.setText(getRate );
+        sendMessage.setText(getRate);
         sendMessage.setChatId(chat.getId());
 
         return sendMessage;

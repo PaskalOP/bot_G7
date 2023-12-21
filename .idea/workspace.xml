@@ -5,19 +5,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e4c05a7e-ec5b-449b-bdd9-d08fb935abac" name="Changes" comment="someButtons">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/buttons/ChooseBank.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/buttons/ChooseCountDigit.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/buttons/ChooseCurrency.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/buttons/ChooseNitification.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/buttons/ChooseSettings.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/buttons/RateData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/commands/ChooseCurrency.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/commands/ChooseDigitsAfterComma.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/commands/ChooseSetAlarmTime.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Buttons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Buttons.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/UserSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/UserSettings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/currency/CurrencyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/currency/CurrencyService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/currency/CurrencyServiceDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/currency/CurrencyServiceDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/currency/model/BankNames.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/currency/model/BankNames.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/currency/model/Currency.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/currency/model/Currency.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/currency/model/MonoBankDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/currency/model/MonoBankDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/currency/model/NationalBankDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/currency/model/NationalBankDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/currency/model/PrivatBankDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/currency/model/PrivatBankDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/currency/model/UserRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/currency/model/UserRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/currency/service/ICurrencyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/currency/service/ICurrencyService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/currency/service/MonoBankICurrencyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/currency/service/MonoBankICurrencyService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/currency/service/NationalBankICurrencyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/currency/service/NationalBankICurrencyService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/currency/service/PrivatBankICurrencyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/currency/service/PrivatBankICurrencyService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/currency/util/CurrencyFormatter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/currency/util/CurrencyFormatter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/telegram/BotLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/BotLogin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/telegram/BotService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/BotService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/telegram/BotTelegram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/BotTelegram.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/telegram/buttons/ChooseBank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/buttons/ChooseBank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/telegram/buttons/ChooseCountDigit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/buttons/ChooseCountDigit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/telegram/buttons/ChooseCurrency.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/buttons/ChooseCurrency.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/telegram/buttons/ChooseNitification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/buttons/ChooseNitification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/telegram/buttons/ChooseSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/buttons/ChooseSettings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/telegram/buttons/RateData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/buttons/RateData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/telegram/commands/ChooseBank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/commands/ChooseBank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/telegram/commands/ChooseCurrency.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/commands/ChooseCurrency.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/telegram/commands/ChooseDigitsAfterComma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/commands/ChooseDigitsAfterComma.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/telegram/commands/ChooseSetAlarmTime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/commands/ChooseSetAlarmTime.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/telegram/commands/ChooseSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/commands/ChooseSettings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/telegram/commands/RateDataPrint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/commands/RateDataPrint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/telegram/commands/StartCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/commands/StartCommand.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,14 +81,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Vovan/Desktop/new",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "configurable.group.appearance"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.Main" />
@@ -87,6 +114,14 @@
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-20.0.2-temurin-20.0.2-249ae16d76d6-052c0711" />
+        <option value="jdk-21.0.1-openjdk-21.0.1-8336523bb0d9-657b72ed" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -232,16 +267,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/org/example/telegram/commands/ChooseSettings.java</url>
           <line>42</line>
           <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/telegram/BotTelegram.java</url>
-          <line>107</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/telegram/BotTelegram.java</url>
-          <line>52</line>
-          <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/telegram/commands/ChooseCurrency.java</url>

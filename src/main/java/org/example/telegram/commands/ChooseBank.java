@@ -1,6 +1,7 @@
 package org.example.telegram.commands;
-
+import org.example.Buttons;
 import org.example.UserSettings;
+import org.example.telegram.BotTelegram;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
@@ -25,7 +26,6 @@ public class ChooseBank {
         InlineKeyboardButton privatBank = new InlineKeyboardButton();
         privatBank.setText("Приват банк ✔\uFE0F");
         privatBank.setCallbackData("PRIVAT");
-
 
 
         InlineKeyboardButton monoBank = new InlineKeyboardButton();

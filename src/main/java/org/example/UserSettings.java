@@ -1,6 +1,7 @@
 package org.example;
 
 import lombok.Data;
+import lombok.Getter;
 import org.telegram.telegrambots.meta.api.objects.Chat;
 
 import java.util.ArrayList;
@@ -8,10 +9,13 @@ import java.util.Arrays;
 import java.util.List;
 
 @Data
-public  class UserSettings {
+public class UserSettings {
+    @Getter
     Long chatId;
-    String alertTime = "09:00";
+    int alertTime = 9;
     Buttons bank = Buttons.ПРИВАТБАНК;
+
+
     /*
      * Requirements are that:
      * We need to set one default Currency. Users can change settings and choose another Currency or several.
@@ -22,4 +26,7 @@ public  class UserSettings {
     public UserSettings(Chat chat){
         chatId = chat.getId();
     }
+
+
 }
+
