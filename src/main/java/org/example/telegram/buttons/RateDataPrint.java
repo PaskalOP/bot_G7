@@ -1,4 +1,4 @@
-package org.example.telegram.commands;
+package org.example.telegram.buttons;
 
 import org.example.UserSettings;
 import org.example.currency.CurrencyService;

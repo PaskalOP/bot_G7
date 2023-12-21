@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.telegram.buttons.Buttons;
 import org.telegram.telegrambots.meta.api.objects.Chat;
 
 import java.util.Arrays;

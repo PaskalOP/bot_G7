@@ -1,4 +1,4 @@
-package org.example.telegram.commands;
+package org.example.telegram.buttons;
 
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;

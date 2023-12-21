@@ -9,6 +9,8 @@ import org.example.currency.util.CurrencyFormatter;
 
 import java.util.List;
 
+import static org.example.currency.model.Currency.USD;
+
 public class CurrencyService {
     ICurrencyService currencyService;
 
