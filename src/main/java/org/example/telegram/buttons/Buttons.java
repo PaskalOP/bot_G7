@@ -1,4 +1,4 @@
-package org.example;
+package org.example.telegram.buttons;
 
 public enum Buttons {
     НАЛАШТУВАННЯ,
