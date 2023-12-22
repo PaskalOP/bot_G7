@@ -10,12 +10,12 @@ import java.util.List;
 
 public class ChooseSettings {
 
-    public SendMessage executeSettings(Chat chat) {
+    public SendMessage executeSettings(Long chatId) {
         String text = "налаштуйте необхідні дані";
 
         SendMessage sm = new SendMessage();
         sm.setText(text);
-        sm.setChatId(chat.getId());
+        sm.setChatId(chatId);
 
         InlineKeyboardMarkup markupInline = new InlineKeyboardMarkup();
         List<List<InlineKeyboardButton>> rowsInline = new ArrayList<>();

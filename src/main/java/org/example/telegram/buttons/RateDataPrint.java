@@ -7,7 +7,7 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Chat;
 
 public class RateDataPrint {
-    public SendMessage printRate(UserSettings settings, Chat chat)
+    public SendMessage printRate(UserSettings settings, Long chatId)
     {
 
         UserRequest userRequest = new UserRequest(settings);
@@ -16,7 +16,7 @@ public class RateDataPrint {
 
         SendMessage sendMessage = new SendMessage();
         sendMessage.setText(getRate);
-        sendMessage.setChatId(chat.getId());
+        sendMessage.setChatId(chatId);
 
         return sendMessage;
     }

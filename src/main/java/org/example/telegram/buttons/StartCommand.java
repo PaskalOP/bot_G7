@@ -9,19 +9,20 @@ import java.util.List;
 
 public class StartCommand  {
 
-    public SendMessage executeStart (Chat chat) {
+    public SendMessage executeStart (Long chatId) {
 
         String text = "Щоб отримати курс валют - натисніть кнопку 'КУРС ВАЛЮТ'. Щоб змінити налаштування - натисніть кнопку НАЛАШТУВАННЯ";
 
         SendMessage sm = new SendMessage();
         sm.setText(text);
-        sm.setChatId(chat.getId());
+        sm.setChatId(chatId);
 
 
         List<KeyboardButton> buttonsList = new ArrayList<>();
 
         buttonsList.add(new KeyboardButton("КУРСИ ВАЛЮT"));
         buttonsList.add(new KeyboardButton("НАЛАШТУВАННЯ"));
+        buttonsList.add(new KeyboardButton("ПОРАХУВАТИ ПО КУРСУ"));
 
 
         List<KeyboardRow> rows = new ArrayList<>();

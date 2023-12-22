@@ -11,6 +11,7 @@ public enum Buttons {
     НБУ,
     USD,
     EUR,
+    UAN,
 
 
 }

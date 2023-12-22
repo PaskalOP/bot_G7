@@ -1,6 +1,7 @@
 package org.example.telegram;
 
 
+import org.example.SettingsForCalculate;
 import org.example.UserSettings;
 import org.example.telegram.buttons.*;
 
@@ -18,7 +19,19 @@ public class TelegramBot extends TelegramLongPollingCommandBot {
     //Налаштування створюються при запуску команди старт. І передаються в поле
     // для використання з різних точок класу    private UserSettings settings;
     private UserSettings settings;
+    private SettingsForCalculate calculateData;
+    private WantSellCurrency forSell;
+    private WantBuyCurrency forBuy;
+     private SendMessage sendMess;
+     private Long chatId;
 
+    public TelegramBot(){
+        calculateData = new SettingsForCalculate();
+        forSell = new WantSellCurrency();
+        forBuy = new WantBuyCurrency();
+        sendMess = new SendMessage();
+
+    }
     @Override
     public String getBotUsername() {        return BotLogin.NAME;
     }
@@ -34,19 +47,19 @@ public class TelegramBot extends TelegramLongPollingCommandBot {
                 if (update.getMessage().getText().equals("/start")) {
                     StartCommand start = new StartCommand();
                     settings = new UserSettings(update.getMessage().getChat());
+                    chatId = update.getMessage().getChatId();
                     try {
-                        execute(start.executeStart(update.getMessage().getChat()));
+                        execute(start.executeStart(chatId));
                     } catch (TelegramApiException e) {
                         System.out.println("Error");
                     }
-                    System.out.println(settings.getBank());
-                    System.out.println(settings.getCurrencies());
+
 
                 }
                 if (update.getMessage().getText().equals("НАЛАШТУВАННЯ")) {
                     ChooseSettings settings = new ChooseSettings();
                     try {
-                        execute(settings.executeSettings(update.getMessage().getChat()));
+                        execute(settings.executeSettings(chatId));
                     } catch (TelegramApiException e) {
                         System.out.println("Error");
                     }
@@ -54,7 +67,7 @@ public class TelegramBot extends TelegramLongPollingCommandBot {
                 if (update.getMessage().getText().equals("КУРСИ ВАЛЮT")) {
                     RateDataPrint message = new RateDataPrint();
                     try {
-                        execute(message.printRate(settings, update.getMessage().getChat()));
+                        execute(message.printRate(settings, chatId));
                     } catch (TelegramApiException e) {
                         System.out.println("Error");
                     }
@@ -69,10 +82,20 @@ public class TelegramBot extends TelegramLongPollingCommandBot {
                         }
                     }
                 }
+                if (update.getMessage().getText().equals("ПОРАХУВАТИ ПО КУРСУ")) {
+                    //WantBuyCurrency forBuy = new WantBuyCurrency();
+
+                    try {
+                        execute(forBuy.sendMessAboveBuy(chatId));
+                    } catch (TelegramApiException e) {
+                        System.out.println("Error");
+                    }
+
+                }
             }
             if (update.hasCallbackQuery()){
                 String data = update.getCallbackQuery().getData();
-                Long chatId =update.getCallbackQuery().getMessage().getChatId();
+               // Long chatId =update.getCallbackQuery().getMessage().getChatId();
                 switch(data){
                     case "BANKS":
                         ChooseBank banks = new ChooseBank();
@@ -152,6 +175,62 @@ public class TelegramBot extends TelegramLongPollingCommandBot {
                     case "9":
                         settings.setAlertTime("9");
                         SendNotification.scheduledNotification(20);
+                        break;
+                    case "usdForBuy":
+                        calculateData.setWantBuyCurrency(Buttons.USD);
+
+                        try {
+                            execute(forSell.messForSellCurrency(chatId));
+                        } catch (TelegramApiException e) {
+                            throw new RuntimeException(e);
+                        }
+                        break;
+
+                    case "eurForBuy":
+                        calculateData.setWantBuyCurrency(Buttons.EUR);
+                        try {
+                            execute(forSell.messForSellCurrency(chatId));
+                        } catch (TelegramApiException e) {
+                            throw new RuntimeException(e);
+                        }
+                        break;
+                    case "uanForBuy":
+                        calculateData.setWantBuyCurrency(Buttons.UAN);
+                        try {
+                            execute(forSell.messForSellCurrency(chatId));
+                        } catch (TelegramApiException e) {
+                            throw new RuntimeException(e);
+                        }
+                        break;
+                    case "USDForSell":
+                        calculateData.setWantSellCurrensy(Buttons.USD);
+                        sendMess.setChatId(chatId);
+                        sendMess.setText("Яку суму ви хочете розміняти? >\n Напишіть ціле число");
+                        try {
+                            execute(sendMess);
+                        } catch (TelegramApiException e) {
+                            throw new RuntimeException(e);
+                        }
+                        break;
+                    case "EURForSell":
+                        calculateData.setWantSellCurrensy(Buttons.EUR);
+                        sendMess.setChatId(chatId);
+                        sendMess.setText("Якe суму ви хочете розміняти?");
+                        try {
+                            execute(sendMess);
+                        } catch (TelegramApiException e) {
+                            throw new RuntimeException(e);
+                        }
+                        break;
+                    case "UANForSell":
+                        calculateData.setWantSellCurrensy(Buttons.UAN);
+                        sendMess.setChatId(chatId);
+                        sendMess.setText("Якe суму ви хочете розміняти?");
+                        try {
+                            execute(sendMess);
+                        } catch (TelegramApiException e) {
+                            throw new RuntimeException(e);
+                        }
                         break;
                 }
             }

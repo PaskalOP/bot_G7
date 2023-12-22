@@ -4,8 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e4c05a7e-ec5b-449b-bdd9-d08fb935abac" name="Changes" comment="+telegramBot new">
+    <list default="true" id="e4c05a7e-ec5b-449b-bdd9-d08fb935abac" name="Changes" comment="додала функціонал отримання декількох валют">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/buttons/WantBuyCurrency.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/buttons/WantSellCurrency.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/SettingsForCalculate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/telegram/TelegramBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/TelegramBot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/telegram/buttons/Buttons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/buttons/Buttons.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/telegram/buttons/ChooseSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/buttons/ChooseSettings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/telegram/buttons/RateDataPrint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/buttons/RateDataPrint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/telegram/buttons/StartCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/buttons/StartCommand.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,17 +61,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.Main" />
@@ -198,7 +209,15 @@
       <option name="project" value="LOCAL" />
       <updated>1703194596511</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="додала функціонал отримання декількох валют">
+      <option name="closed" value="true" />
+      <created>1703239438683</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1703239438683</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -254,7 +273,8 @@
     <MESSAGE value="someButtons" />
     <MESSAGE value="+telegramBot" />
     <MESSAGE value="+telegramBot new" />
-    <option name="LAST_COMMIT_MESSAGE" value="+telegramBot new" />
+    <MESSAGE value="додала функціонал отримання декількох валют" />
+    <option name="LAST_COMMIT_MESSAGE" value="додала функціонал отримання декількох валют" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
