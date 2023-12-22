@@ -4,18 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e4c05a7e-ec5b-449b-bdd9-d08fb935abac" name="Changes" comment="додала функціонал отримання декількох валют">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/buttons/WantBuyCurrency.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/buttons/WantSellCurrency.java" afterDir="false" />
+    <list default="true" id="e4c05a7e-ec5b-449b-bdd9-d08fb935abac" name="Changes" comment="add new module">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/calculateForRate/CalculateForRate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/calculateForRate/SettingsForCalculate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/SettingsForCalculate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/SettingsForCalculate.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/telegram/TelegramBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/TelegramBot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/telegram/buttons/Buttons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/buttons/Buttons.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/telegram/buttons/ChooseSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/buttons/ChooseSettings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/telegram/buttons/RateDataPrint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/buttons/RateDataPrint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/telegram/buttons/StartCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/buttons/StartCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/telegram/buttons/WantBuyCurrency.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/calculateForRate/WantBuyCurrency.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/telegram/buttons/WantSellCurrency.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/telegram/calculateForRate/WantSellCurrency.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +75,7 @@
       <module name="bot_G7" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.example.*" />
+          <option name="PATTERN" value="org.example.telegram.calculateForRate.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -217,7 +213,15 @@
       <option name="project" value="LOCAL" />
       <updated>1703239438683</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="add new module">
+      <option name="closed" value="true" />
+      <created>1703245937946</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1703245937946</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -274,7 +278,8 @@
     <MESSAGE value="+telegramBot" />
     <MESSAGE value="+telegramBot new" />
     <MESSAGE value="додала функціонал отримання декількох валют" />
-    <option name="LAST_COMMIT_MESSAGE" value="додала функціонал отримання декількох валют" />
+    <MESSAGE value="add new module" />
+    <option name="LAST_COMMIT_MESSAGE" value="add new module" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
