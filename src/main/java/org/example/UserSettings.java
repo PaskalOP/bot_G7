@@ -18,9 +18,12 @@ public  class UserSettings {
      * We need to set one default Currency. Users can change settings and choose another Currency or several.
      * That's why when you set new settings, you need to check List, set new value and delete old value
      * */
-    List<Buttons> currencies = Arrays.asList(Buttons.USD); //You can add Buttons.EUR - for two values
+    List<Buttons> currencies = new ArrayList<>();
+            //Arrays.asList(Buttons.USD); //You can add Buttons.EUR - for two values
     int numbersAfterPoint = 2;
     public UserSettings(Chat chat){
+
         chatId = chat.getId();
+        currencies.add(Buttons.USD);
     }
 }

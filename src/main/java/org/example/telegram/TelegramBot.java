@@ -58,6 +58,16 @@ public class TelegramBot extends TelegramLongPollingCommandBot {
                     } catch (TelegramApiException e) {
                         System.out.println("Error");
                     }
+                    if  (settings.getCurrencies().isEmpty()){
+                        SendMessage sendMes = new SendMessage();
+                        sendMes .setChatId(update.getMessage().getChat().getId());
+                        sendMes .setText("Ой, а що то таке трапилось?\uD83D\uDE31 \n Ти просто не обрав жодної валюти\uD83D\uDC46");
+                        try {
+                            execute(sendMes);
+                        } catch (TelegramApiException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
                 }
             }
             if (update.hasCallbackQuery()){
@@ -114,10 +124,21 @@ public class TelegramBot extends TelegramLongPollingCommandBot {
                         settings.setBank(Buttons.НБУ);
                         break;
                     case "EUR":
-                        settings.setCurrencies( Arrays.asList(Buttons.EUR));
+                        if(settings.getCurrencies().contains(Buttons.EUR)){
+                            settings.getCurrencies().remove(Buttons.EUR);
+                        }
+                        else {
+                            settings.getCurrencies().add(Buttons.EUR);
+                        }
+
                         break;
                     case "USD":
-                        settings.setCurrencies( Arrays.asList(Buttons.USD));
+                        if(settings.getCurrencies().contains(Buttons.USD)){
+                            settings.getCurrencies().remove(Buttons.USD);
+                        }
+                        else {
+                            settings.getCurrencies().add(Buttons.USD);
+                        }
                         break;
                     case "2":
                         settings.setNumbersAfterPoint(2);
