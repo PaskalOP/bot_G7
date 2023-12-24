@@ -13,5 +13,11 @@ public enum Buttons {
     EUR,
     UAN,
 
+    TWO,
+
+    THREE,
+
+    FOUR,
+
 
 }

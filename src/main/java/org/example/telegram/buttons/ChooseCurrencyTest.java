@@ -9,24 +9,22 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKe
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChooseDigitsAfterComma implements ButtonsInterf{
+public class ChooseCurrencyTest implements ButtonsInterf{
+
     private UserSettings settings;
 
-    public ChooseDigitsAfterComma(UserSettings settings) {
-        this.settings = settings;
+    public ChooseCurrencyTest(UserSettings settings) {
+        this.settings=settings;
     }
-
 
     @Override
     public SendMessage sendButtonMessage(Long chatId) {
         SendMessage sm = new SendMessage();
-        sm.setText("Кількість знаків після коми");
+        sm.setText("Оберіть валюти");
         sm.setChatId(chatId);
 
         InlineKeyboardMarkup keyboardMarkup = createKeyboardMarkup();
-
         sm.setReplyMarkup(keyboardMarkup);
-
         return sm;
     }
 
@@ -37,9 +35,8 @@ public class ChooseDigitsAfterComma implements ButtonsInterf{
         List<List<InlineKeyboardButton>> rowsInline = new ArrayList<>();
         List<InlineKeyboardButton> rowInline = new ArrayList<>();
 
-        rowInline.add(createButton(Buttons.TWO));
-        rowInline.add(createButton(Buttons.THREE));
-        rowInline.add(createButton(Buttons.FOUR));
+        rowInline.add(createButton(Buttons.USD));
+        rowInline.add(createButton(Buttons.EUR));
 
         rowsInline.add(rowInline);
         keyboardMarkup.setKeyboard(rowsInline);
@@ -49,36 +46,28 @@ public class ChooseDigitsAfterComma implements ButtonsInterf{
 
     @Override
     public InlineKeyboardButton createButton(Buttons button) {
-
-        int digitsAfterCom = 0;
-        switch(button){
-            case TWO -> digitsAfterCom=2;
-            case THREE -> digitsAfterCom=3;
-            case FOUR -> digitsAfterCom=4;
-        }
-
         InlineKeyboardButton keyboardButton = new InlineKeyboardButton();
-        if (settings.getNumbersAfterPoint()==digitsAfterCom){
-            keyboardButton.setText("✅ " + digitsAfterCom);
+        if (settings.getCurrencies().contains(button)){
+            keyboardButton.setText("✅ " + button);
         }else {
-            keyboardButton.setText(String.valueOf(digitsAfterCom));
+            keyboardButton.setText(String.valueOf(button));
         }
-        keyboardButton.setCallbackData(String.valueOf(digitsAfterCom));
-
+       keyboardButton.setCallbackData(String.valueOf(button));
         return keyboardButton;
-
     }
 
     @Override
     public EditMessageText editButtonMessage(UserSettings settings, Long chatId, Integer messageId) {
+
         InlineKeyboardMarkup keyboardMarkup = createKeyboardMarkup();
 
         EditMessageText editMessageText = new EditMessageText();
         editMessageText.setChatId(chatId);
         editMessageText.setMessageId(messageId);
-        editMessageText.setText("Кількість знаків після коми");
+        editMessageText.setText("Оберіть валюти");
         editMessageText.setReplyMarkup(keyboardMarkup);
 
         return editMessageText;
+
     }
 }
