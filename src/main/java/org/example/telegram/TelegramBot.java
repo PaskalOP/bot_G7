@@ -9,7 +9,6 @@ import org.example.telegram.buttons.*;
 
 import org.example.telegram.calculateForRate.WantBuyCurrency;
 import org.example.telegram.calculateForRate.WantSellCurrency;
-import org.example.telegram.sendNotification.SendNotification;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.updatingmessages.EditMessageText;
@@ -18,6 +17,11 @@ import org.telegram.telegrambots.meta.api.objects.MessageId;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.bots.AbsSender;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+
+import java.util.Calendar;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class TelegramBot extends TelegramLongPollingBot {
     //Налаштування створюються при запуску команди старт. І передаються в поле
@@ -227,7 +231,55 @@ public class TelegramBot extends TelegramLongPollingBot {
                     break;
                 case "9":
                     settings.setAlertTime("9");
-                    SendNotification.scheduledNotification(20);
+                    scheduledNotification(settings);
+                    break;
+                case "10":
+                    settings.setAlertTime("10");
+                    scheduledNotification(settings);
+                    break;
+                case "11":
+                    settings.setAlertTime("11");
+                    scheduledNotification(settings);
+                    break;
+                case "12":
+                    settings.setAlertTime("12");
+                    scheduledNotification(settings);
+                    break;
+                case "13":
+                    settings.setAlertTime("13");
+                    scheduledNotification(settings);
+                    break;
+                case "14":
+                    settings.setAlertTime("14");
+                    scheduledNotification(settings);
+                    break;
+                case "15":
+                    settings.setAlertTime("15");
+                    scheduledNotification(settings);
+                    break;
+                case "16":
+                    settings.setAlertTime("16");
+                    scheduledNotification(settings);
+                    break;
+                case "17":
+                    settings.setAlertTime("17");
+                    scheduledNotification(settings);
+                    break;
+                case "18":
+                    settings.setAlertTime("18");
+                    scheduledNotification(settings);
+                    break;
+                case "19":
+                    settings.setAlertTime("19");
+                    scheduledNotification(settings);
+                    break;
+                case "20":
+                    settings.setAlertTime("20");
+                    scheduledNotification(settings);
+                    break;
+                case "DISABLE_ALERT":
+                    settings.setAlertTime("DISABLE_ALERT");
+                    stopScheduledNotification();
                     break;
                 case "usdForBuy":
                     calculateData.setWantBuyCurrency(Buttons.USD);
@@ -287,6 +339,39 @@ public class TelegramBot extends TelegramLongPollingBot {
                     }
                     break;
             }
+        }
+
+
+    }
+    private static ScheduledExecutorService scheduler;
+    public void scheduledNotification(UserSettings settings) {
+
+        scheduler = Executors.newScheduledThreadPool(1);
+        // Визначте час, коли потрібно відправити повідомлення
+        Calendar scheduledTime = Calendar.getInstance();
+        scheduledTime.set(Calendar.HOUR_OF_DAY,Integer.parseInt(settings.getAlertTime())); // Година (24-годинний формат)
+        scheduledTime.set(Calendar.MINUTE, 0);       // Хвилина
+        scheduledTime.set(Calendar.SECOND, 0);       // Секунда
+
+        // Отримайте різницю в часі між поточним часом і визначеним часом
+        long initialDelay = scheduledTime.getTimeInMillis() - System.currentTimeMillis();
+
+        // Встановіть завдання для відправлення повідомлення
+        scheduler.scheduleAtFixedRate(() -> {
+            System.out.println("123");
+
+            RateDataPrint message = new RateDataPrint();
+            try {
+                execute(message.printRate(settings, chatId));
+            } catch (TelegramApiException e) {
+                System.out.println("Error");
+            }
+
+        }, initialDelay, TimeUnit.DAYS.toMillis(1), TimeUnit.MILLISECONDS);
+    }
+    public static void stopScheduledNotification() {
+        if (scheduler != null && !scheduler.isShutdown()) {
+            scheduler.shutdown();
         }
 
 
