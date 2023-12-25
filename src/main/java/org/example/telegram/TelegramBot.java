@@ -263,16 +263,10 @@ public class TelegramBot extends TelegramLongPollingBot {
                     execute(setAlarmTimeButtons.editButtonMessage(chatId,messageId));
                     scheduledNotification(settings);
                     break;
-                case "19":
-                    settings.setAlertTime("19");
-                    scheduledNotification(settings);
-                    break;
-                case "20":
-                    settings.setAlertTime("20");
-                    scheduledNotification(settings);
-                    break;
+
                 case "DISABLE_ALERT":
                     settings.setAlertTime("DISABLE_ALERT");
+                    execute(setAlarmTimeButtons.editButtonMessage(chatId,messageId));
                     stopScheduledNotification();
                     break;
                 case "usdForBuy":
@@ -334,8 +328,6 @@ public class TelegramBot extends TelegramLongPollingBot {
                     break;
             }
         }
-
-
     }
     private static ScheduledExecutorService scheduler;
     public void scheduledNotification(UserSettings settings) {

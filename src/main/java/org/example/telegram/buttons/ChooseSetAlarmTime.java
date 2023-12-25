@@ -95,7 +95,7 @@ public class ChooseSetAlarmTime {
 
         //створюємо кнопки в рядку
         InlineKeyboardButton disableAlertButton = new InlineKeyboardButton();
-        disableAlertButton.setText("Вимкнути повідомлення");
+        disableAlertButton.setText(settings.getAlertTime().equals("DISABLE_ALERT")?"Вимкнути повідомлення ✅ ":"Вимкнути повідомлення");
         disableAlertButton.setCallbackData("DISABLE_ALERT");
 
         // добавляємо кнопки в четвертий ряд
