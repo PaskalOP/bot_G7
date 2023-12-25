@@ -1,6 +1,8 @@
 package org.example.telegram.buttons;
 
+import org.example.telegram.settings.UserSettings;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.methods.updatingmessages.EditMessageText;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 
@@ -8,14 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ChooseSetAlarmTime {
-
-    public SendMessage sendAlarmTimeOptions(Long chatId){
-
-        // створюємо обєкт повідомлення
-        SendMessage sm = new SendMessage();
-        sm.setText("Виберіть час сповіщень");
-        sm.setChatId(chatId);
-
+   private UserSettings settings;
+   public ChooseSetAlarmTime(UserSettings settings){
+       this.settings = settings;
+   }
+    public InlineKeyboardMarkup createMarkup(){
         // створюємо обєкт вбудованої клавіатури
         InlineKeyboardMarkup markupInline  = new InlineKeyboardMarkup();
 
@@ -27,15 +26,16 @@ public class ChooseSetAlarmTime {
 
         //створюємо кнопки в рядку
         InlineKeyboardButton nineButton = new InlineKeyboardButton();
-        nineButton.setText("9");
+
+        nineButton.setText(settings.getAlertTime().equals("9")?"9 ✅ ":"9");
         nineButton.setCallbackData("9");
 
         InlineKeyboardButton tenButton = new InlineKeyboardButton();
-        tenButton.setText("10");
+        tenButton.setText(settings.getAlertTime().equals("10")?"10 ✅ ":"10");
         tenButton.setCallbackData("10");
 
         InlineKeyboardButton elevenButton = new InlineKeyboardButton();
-        elevenButton.setText("11");
+        elevenButton.setText(settings.getAlertTime().equals("11")?"11 ✅ ":"11");
         elevenButton.setCallbackData("11");
 
         // добавляємо кнопки в перший ряд
@@ -48,15 +48,15 @@ public class ChooseSetAlarmTime {
 
         //створюємо кнопки в рядку
         InlineKeyboardButton twelveButton = new InlineKeyboardButton();
-        twelveButton.setText("12");
+        twelveButton.setText(settings.getAlertTime().equals("12")?"12 ✅ ":"12");
         twelveButton.setCallbackData("12");
 
         InlineKeyboardButton thirteenButton = new InlineKeyboardButton();
-        thirteenButton.setText("13");
+        thirteenButton.setText(settings.getAlertTime().equals("13")?"13 ✅ ":"13");
         thirteenButton.setCallbackData("13");
 
         InlineKeyboardButton fourteenButton = new InlineKeyboardButton();
-        fourteenButton.setText("14");
+        fourteenButton.setText(settings.getAlertTime().equals("14")?"14 ✅ ":"14");
         fourteenButton.setCallbackData("14");
 
         // добавляємо кнопки в другий ряд
@@ -69,19 +69,19 @@ public class ChooseSetAlarmTime {
 
         //створюємо кнопки в рядку
         InlineKeyboardButton fifteenButton = new InlineKeyboardButton();
-        fifteenButton.setText("15");
+        fifteenButton.setText(settings.getAlertTime().equals("15")?"15 ✅ ":"15");
         fifteenButton.setCallbackData("15");
 
         InlineKeyboardButton sixteenButton = new InlineKeyboardButton();
-        sixteenButton.setText("16");
+        sixteenButton.setText(settings.getAlertTime().equals("16")?"16 ✅ ":"16");
         sixteenButton.setCallbackData("16");
 
         InlineKeyboardButton seventeenButton = new InlineKeyboardButton();
-        seventeenButton.setText("17");
+        seventeenButton.setText(settings.getAlertTime().equals("17")?"17 ✅ ":"17");
         seventeenButton.setCallbackData("17");
 
         InlineKeyboardButton eighteenButton = new InlineKeyboardButton();
-        eighteenButton.setText("18");
+        eighteenButton.setText(settings.getAlertTime().equals("18")?"18 ✅ ":"18");
         eighteenButton.setCallbackData("18");
 
         // добавляємо кнопки в третій ряд
@@ -108,10 +108,31 @@ public class ChooseSetAlarmTime {
         rowsInline.add(rowInline4);
 
         // добаляємо щойно створену клавіатуру в повідомлення
-        markupInline.setKeyboard(rowsInline);
-        sm.setReplyMarkup(markupInline);
+       markupInline.setKeyboard(rowsInline);
+        return markupInline;
+    }
 
+    public SendMessage sendAlarmTimeOptions(Long chatId){
+
+        // створюємо обєкт повідомлення
+        SendMessage sm = new SendMessage();
+        sm.setText("Oберіть час сповіщень");
+        sm.setChatId(chatId);
+        sm.setReplyMarkup(createMarkup());
         return sm;
+
+    }
+    public EditMessageText editButtonMessage( Long chatId, Integer messageId) {
+
+        InlineKeyboardMarkup keyboardMarkup = createMarkup();
+
+        EditMessageText editMessageText = new EditMessageText();
+        editMessageText.setChatId(chatId);
+        editMessageText.setMessageId(messageId);
+        editMessageText.setText("Oберіть час сповіщень");
+        editMessageText.setReplyMarkup(keyboardMarkup);
+
+        return editMessageText;
 
     }
 

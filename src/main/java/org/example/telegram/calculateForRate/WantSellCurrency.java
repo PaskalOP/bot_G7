@@ -12,7 +12,7 @@ public class WantSellCurrency {
     public SendMessage messForSellCurrency(Long chatId){
         SendMessage sm = new SendMessage();
 
-        sm.setText("Яку валюту ви хочете продати?");
+        sm.setText("Яку валюта у вас є?");
         sm.setChatId(chatId);
 
         InlineKeyboardMarkup keyboardMarkup = new InlineKeyboardMarkup();

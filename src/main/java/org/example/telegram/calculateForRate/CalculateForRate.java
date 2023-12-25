@@ -1,6 +1,6 @@
 package org.example.telegram.calculateForRate;
 
-import org.example.UserSettings;
+import org.example.telegram.settings.UserSettings;
 import org.example.currency.model.Currency;
 import org.example.currency.model.UserRequest;
 import org.example.currency.service.ICurrencyService;
@@ -30,14 +30,14 @@ public class CalculateForRate {
         double summResult = 0;
         if(dataFromUser.getWantSellCurrensy()==Buttons.UAN){
             summResult = summBase/currencyService
-                    .getRate(dataFromUser.getWantBuyCurrency()==Buttons.EUR?Currency.EUR:Currency.USD).get(0);
+                    .getRate(dataFromUser.getWantBuyCurrency()==Buttons.EUR?Currency.EUR:Currency.USD).get(1);
 
         }
         if (dataFromUser.getWantBuyCurrency()==Buttons.UAN){
             summResult = summBase*currencyService
-                    .getRate(dataFromUser.getWantBuyCurrency()==Buttons.EUR?Currency.EUR:Currency.USD).get(1);
+                    .getRate(dataFromUser.getWantSellCurrensy()==Buttons.EUR?Currency.EUR:Currency.USD).get(0);
         }
-        result = "Ви отримаєте " + summResult;
+        result = "Ви отримаєте " + String.format("%.2f",summResult) + " "+ dataFromUser.getWantBuyCurrency();
 
         return result;
     }

@@ -1,10 +1,9 @@
 package org.example.telegram.buttons;
 
-import org.example.UserSettings;
+import org.example.telegram.settings.UserSettings;
 import org.example.currency.CurrencyService;
 import org.example.currency.model.UserRequest;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import org.telegram.telegrambots.meta.api.objects.Chat;
 
 public class RateDataPrint {
     public SendMessage printRate(UserSettings settings, Long chatId)

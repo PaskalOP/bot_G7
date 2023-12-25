@@ -12,7 +12,7 @@ public class WantBuyCurrency {
     public SendMessage sendMessAboveBuy(Long catId){
 
         SendMessage sm = new SendMessage();
-        sm.setText("Яку валюту ви хочете придбати?");
+        sm.setText("Ви можете порахувати обмін валют UAN на USD, EUR або EUR,USD на UAN.\n Яку валюту ви хочете придбати? ");
         sm.setChatId(catId);
 
         InlineKeyboardMarkup keyboardMarkup = new InlineKeyboardMarkup();

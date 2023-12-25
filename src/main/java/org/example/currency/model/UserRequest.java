@@ -2,7 +2,7 @@ package org.example.currency.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.example.UserSettings;
+import org.example.telegram.settings.UserSettings;
 
 import java.util.List;
 import java.util.stream.Collectors;

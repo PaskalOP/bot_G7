@@ -4,18 +4,15 @@ package org.example.telegram;
 import lombok.SneakyThrows;
 import org.example.telegram.calculateForRate.CalculateForRate;
 import org.example.telegram.calculateForRate.SettingsForCalculate;
-import org.example.UserSettings;
+import org.example.telegram.settings.SavedSettings;
+import org.example.telegram.settings.UserSettings;
 import org.example.telegram.buttons.*;
 
 import org.example.telegram.calculateForRate.WantBuyCurrency;
 import org.example.telegram.calculateForRate.WantSellCurrency;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import org.telegram.telegrambots.meta.api.methods.updatingmessages.EditMessageText;
-import org.telegram.telegrambots.meta.api.objects.CallbackQuery;
-import org.telegram.telegrambots.meta.api.objects.MessageId;
 import org.telegram.telegrambots.meta.api.objects.Update;
-import org.telegram.telegrambots.meta.bots.AbsSender;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.util.Calendar;
@@ -32,17 +29,15 @@ public class TelegramBot extends TelegramLongPollingBot {
     private WantBuyCurrency forBuy;
      private SendMessage sendMess;
      private Long chatId;
-     private Integer messageId;
      private CalculateForRate calculator;
+     private ChooseSetAlarmTime setAlarmTimeButtons;
 
-     private EditMessageText editMessageText;
 
     public TelegramBot(){
         calculateData = new SettingsForCalculate();
         forSell = new WantSellCurrency();
         forBuy = new WantBuyCurrency();
         sendMess = new SendMessage();
-
 
     }
     @Override
@@ -51,8 +46,6 @@ public class TelegramBot extends TelegramLongPollingBot {
     @Override
     public String getBotToken() {        return BotLogin.TOKEN;
     }
-//    @Override    public void processNonCommandUpdate(Update update) {
-//    }
      @SneakyThrows
      @Override
     public void onUpdateReceived(Update update) {
@@ -60,8 +53,9 @@ public class TelegramBot extends TelegramLongPollingBot {
         if (update.hasMessage()) {
             if (update.getMessage().getText().equals("/start")) {
                 StartCommand start = new StartCommand();
-                settings = new UserSettings(update.getMessage().getChat());
                 chatId = update.getMessage().getChatId();
+               // SavedSettings currentSettings = new SavedSettings(chatId);
+                settings = new UserSettings(chatId);
 
                 try {
                     execute(start.executeStart(chatId));
@@ -132,23 +126,23 @@ public class TelegramBot extends TelegramLongPollingBot {
                     }break;
 
                 case "CURRENCIES":
-                    //ChooseCurrency currencyButtons = new ChooseCurrency(settings);
-                    ChooseCurrencyTest chooseCurrencyTest = new ChooseCurrencyTest(settings);
+                    ChooseCurrency chooseCurrency = new ChooseCurrency(settings);
                     try {
-                        //execute(currencyButtons.sendCurrencyButtons(chatId));
-                        execute(chooseCurrencyTest.sendButtonMessage(chatId));
+                        execute(chooseCurrency.sendButtonMessage(chatId));
 
                     } catch (TelegramApiException e) {
                         throw new RuntimeException(e);
                     }break;
 
                 case "ALARM_TIME":
-                    ChooseSetAlarmTime setAlarmTimeButtons = new ChooseSetAlarmTime();
+                    setAlarmTimeButtons = new ChooseSetAlarmTime(settings);
+
                     try {
                         execute(setAlarmTimeButtons.sendAlarmTimeOptions(chatId));
                     } catch (TelegramApiException e) {
                         throw new RuntimeException(e);
                     }break;
+
 
                 case "DIGITS_COMMA":
                     ChooseDigitsAfterComma chooseDigitsAfterComma = new ChooseDigitsAfterComma(settings);
@@ -160,7 +154,6 @@ public class TelegramBot extends TelegramLongPollingBot {
 
                 case "МОНОБАНК":
                     settings.setBank(Buttons.МОНОБАНК);
-                    //SendMessage sm = new SendMessage();
                     sendMess.setChatId(chatId);
                     sendMess.setText("Му-ха-ха... Тепер ти на темій стороні котиків!");
                     ChooseBank chooseBank2 = new ChooseBank(settings);
@@ -183,35 +176,26 @@ public class TelegramBot extends TelegramLongPollingBot {
                 case "EUR":
                     if(settings.getCurrencies().contains(Buttons.EUR)){
                         settings.getCurrencies().remove(Buttons.EUR);
-                        //ChooseCurrency chooseCurrency = new ChooseCurrency(settings);
-                        //execute(chooseCurrency.editCurrencyMessage(settings, chatId, messageId));
-                        ChooseCurrencyTest chooseCurrencyTest1 = new ChooseCurrencyTest(settings);
-                        execute(chooseCurrencyTest1.editButtonMessage(settings, chatId, messageId));
+                        ChooseCurrency chooseCurrency1 = new ChooseCurrency(settings);
+                        execute(chooseCurrency1.editButtonMessage(settings, chatId, messageId));
                     }
                     else {
                         settings.getCurrencies().add(Buttons.EUR);
-                        //ChooseCurrency chooseCurrency = new ChooseCurrency(settings);
-                        //execute(chooseCurrency.editCurrencyMessage(settings, chatId, messageId));
-                        ChooseCurrencyTest chooseCurrencyTest1 = new ChooseCurrencyTest(settings);
-                        execute(chooseCurrencyTest1.editButtonMessage(settings, chatId, messageId));
+                        ChooseCurrency chooseCurrency1 = new ChooseCurrency(settings);
+                        execute(chooseCurrency1.editButtonMessage(settings, chatId, messageId));
                     }
 
                     break;
                 case "USD":
                     if(settings.getCurrencies().contains(Buttons.USD)){
                         settings.getCurrencies().remove(Buttons.USD);
-                        //ChooseCurrency chooseCurrency = new ChooseCurrency(settings);
-                        //execute(chooseCurrency.editCurrencyMessage(settings, chatId, messageId));
-                        ChooseCurrencyTest chooseCurrencyTest1 = new ChooseCurrencyTest(settings);
-                        execute(chooseCurrencyTest1.editButtonMessage(settings, chatId, messageId));
+                        ChooseCurrency chooseCurrency1 = new ChooseCurrency(settings);
+                        execute(chooseCurrency1.editButtonMessage(settings, chatId, messageId));
                     }
                     else {
                         settings.getCurrencies().add(Buttons.USD);
-                        //ChooseCurrency chooseCurrency = new ChooseCurrency(settings);
-                        //execute(chooseCurrency.editCurrencyMessage(settings, chatId, messageId));
-                        ChooseCurrencyTest chooseCurrencyTest1 = new ChooseCurrencyTest(settings);
-                        execute(chooseCurrencyTest1.editButtonMessage(settings, chatId, messageId));
-
+                        ChooseCurrency chooseCurrency1 = new ChooseCurrency(settings);
+                        execute(chooseCurrency1.editButtonMessage(settings, chatId, messageId));
                     }
                     break;
                 case "2":
@@ -231,42 +215,52 @@ public class TelegramBot extends TelegramLongPollingBot {
                     break;
                 case "9":
                     settings.setAlertTime("9");
+                    execute(setAlarmTimeButtons.editButtonMessage(chatId,messageId));
                     scheduledNotification(settings);
                     break;
                 case "10":
                     settings.setAlertTime("10");
+                    execute(setAlarmTimeButtons.editButtonMessage(chatId,messageId));
                     scheduledNotification(settings);
                     break;
                 case "11":
                     settings.setAlertTime("11");
+                    execute(setAlarmTimeButtons.editButtonMessage(chatId,messageId));
                     scheduledNotification(settings);
                     break;
                 case "12":
                     settings.setAlertTime("12");
+                    execute(setAlarmTimeButtons.editButtonMessage(chatId,messageId));
                     scheduledNotification(settings);
                     break;
                 case "13":
                     settings.setAlertTime("13");
+                    execute(setAlarmTimeButtons.editButtonMessage(chatId,messageId));
                     scheduledNotification(settings);
                     break;
                 case "14":
                     settings.setAlertTime("14");
+                    execute(setAlarmTimeButtons.editButtonMessage(chatId,messageId));
                     scheduledNotification(settings);
                     break;
                 case "15":
                     settings.setAlertTime("15");
+                    execute(setAlarmTimeButtons.editButtonMessage(chatId,messageId));
                     scheduledNotification(settings);
                     break;
                 case "16":
                     settings.setAlertTime("16");
+                    execute(setAlarmTimeButtons.editButtonMessage(chatId,messageId));
                     scheduledNotification(settings);
                     break;
                 case "17":
                     settings.setAlertTime("17");
+                    execute(setAlarmTimeButtons.editButtonMessage(chatId,messageId));
                     scheduledNotification(settings);
                     break;
                 case "18":
                     settings.setAlertTime("18");
+                    execute(setAlarmTimeButtons.editButtonMessage(chatId,messageId));
                     scheduledNotification(settings);
                     break;
                 case "19":
@@ -309,7 +303,7 @@ public class TelegramBot extends TelegramLongPollingBot {
                 case "USDForSell":
                     calculateData.setWantSellCurrensy(Buttons.USD);
                     sendMess.setChatId(chatId);
-                    sendMess.setText("Яку суму ви хочете розміняти? >\n Напишіть ціле число");
+                    sendMess.setText("Яку суму ви хочете розміняти? \n Напишіть ціле число");
 
                     try {
                         execute(sendMess);
@@ -321,7 +315,7 @@ public class TelegramBot extends TelegramLongPollingBot {
                 case "EURForSell":
                     calculateData.setWantSellCurrensy(Buttons.EUR);
                     sendMess.setChatId(chatId);
-                    sendMess.setText("Якy суму ви хочете розміняти?");
+                    sendMess.setText("Якy суму ви хочете розміняти?\n Напишіть ціле число");
                     try {
                         execute(sendMess);
                     } catch (TelegramApiException e) {
@@ -331,7 +325,7 @@ public class TelegramBot extends TelegramLongPollingBot {
                 case "UANForSell":
                     calculateData.setWantSellCurrensy(Buttons.UAN);
                     sendMess.setChatId(chatId);
-                    sendMess.setText("Якy суму ви хочете розміняти?");
+                    sendMess.setText("Якy суму ви хочете розміняти?\n Напишіть ціле число");
                     try {
                         execute(sendMess);
                     } catch (TelegramApiException e) {
@@ -355,6 +349,10 @@ public class TelegramBot extends TelegramLongPollingBot {
 
         // Отримайте різницю в часі між поточним часом і визначеним часом
         long initialDelay = scheduledTime.getTimeInMillis() - System.currentTimeMillis();
+        if (initialDelay < 0) {
+            // Якщо він від'ємний, додайте 24 години, щоб запланувати його на наступний день
+            initialDelay += TimeUnit.DAYS.toMillis(1);
+        }
 
         // Встановіть завдання для відправлення повідомлення
         scheduler.scheduleAtFixedRate(() -> {

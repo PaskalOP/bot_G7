@@ -1,8 +1,5 @@
 package org.example.currency;
 
-import org.example.UserSettings;
-import org.example.currency.model.UserRequest;
-
 public class CurrencyServiceDemo {
     public static void main(String[] args) {
 
