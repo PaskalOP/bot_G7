@@ -1,6 +1,7 @@
 package org.example.telegram.settings;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 import com.google.gson.Gson;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -29,6 +30,7 @@ public class SavedSettings {
         }
         else {
             currentSettings = new UserSettings(chatId);
+            listSettings = new ArrayList<>();
             listSettings.add(currentSettings);
         }
         writeSettingsToFile();

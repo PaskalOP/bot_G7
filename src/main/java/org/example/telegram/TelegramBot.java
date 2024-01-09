@@ -1,5 +1,6 @@
 package org.example.telegram;
 
+
 import lombok.SneakyThrows;
 import org.example.telegram.calculateForRate.CalculateForRate;
 import org.example.telegram.calculateForRate.SettingsForCalculate;
@@ -15,9 +16,12 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.util.Calendar;
+import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+
+import static org.example.telegram.buttons.Buttons.*;
 
 public class TelegramBot extends TelegramLongPollingBot {
     //Налаштування створюються при запуску команди старт. І передаються в поле
@@ -68,6 +72,8 @@ public class TelegramBot extends TelegramLongPollingBot {
             if (update.getMessage().getText().equals("/start")) {
                 StartCommand start = new StartCommand();
                 chatId = update.getMessage().getChatId();
+//                UserSettings userSettings = new UserSettings(475043906L, "9", ПРИВАТБАНК, List.of(new Buttons[]{USD,EUR}), 2);
+//                settings = new UserSettings(chatId);
                 savedSettings = new SavedSettings(chatId);
                 settings = savedSettings.getCurrentSettings();
                 setSettingsChanged(false);
@@ -223,6 +229,7 @@ public class TelegramBot extends TelegramLongPollingBot {
                     }
                     setSettingsChanged(true);
                     break;
+
                 case "DISABLE_ALERT":
                     settings.setAlertTime("DISABLE_ALERT");
                     execute(setAlarmTimeButtons.editButtonMessage(chatId,messageId));
@@ -285,7 +292,7 @@ public class TelegramBot extends TelegramLongPollingBot {
                     break;
             }
         } // Update(updateId=346172210, message=Message(messageId=2692, messageThreadId=null, from=User(id=475043906, firstName=Веселовский, isBot=false, lastName=Владимир, userName=RoWy000, languageCode=en, canJoinGroups=null, canReadAllGroupMessages=null, supportInlineQueries=null, isPremium=null, addedToAttachmentMenu=null), date=1703857071, chat=Chat(id=475043906, type=private, title=null, firstName=Веселовский, lastName=Владимир, userName=RoWy000, photo=null, description=null, inviteLink=null, pinnedMessage=null, stickerSetName=null, canSetStickerSet=null, permissions=null, slowModeDelay=null, bio=null, linkedChatId=null, location=null, messageAutoDeleteTime=null, hasPrivateForwards=null, HasProtectedContent=null, joinToSendMessages=null, joinByRequest=null, hasRestrictedVoiceAndVideoMessages=null, isForum=null, activeUsernames=null, emojiStatusCustomEmojiId=null, hasAggressiveAntiSpamEnabled=null, hasHiddenMembers=null), forwardFrom=null, forwardFromChat=null, forwardDate=null, text=/start, entities=[MessageEntity(type=bot_command, offset=0, length=6, url=null, user=null, language=null, customEmojiId=null, text=/start)], captionEntities=null, audio=null, document=null, photo=null, sticker=null, video=null, contact=null, location=null, venue=null, animation=null, pinnedMessage=null, newChatMembers=[], leftChatMember=null, newChatTitle=null, newChatPhoto=null, deleteChatPhoto=null, groupchatCreated=null, replyToMessage=null, voice=null, caption=null, superGroupCreated=null, channelChatCreated=null, migrateToChatId=null, migrateFromChatId=null, editDate=null, game=null, forwardFromMessageId=null, invoice=null, successfulPayment=null, videoNote=null, authorSignature=null, forwardSignature=null, mediaGroupId=null, connectedWebsite=null, passportData=null, forwardSenderName=null, poll=null, replyMarkup=null, dice=null, viaBot=null, senderChat=null, proximityAlertTriggered=null, messageAutoDeleteTimerChanged=null, isAutomaticForward=null, hasProtectedContent=null, webAppData=null, videoChatStarted=null, videoChatEnded=null, videoChatParticipantsInvited=null, videoChatScheduled=null, isTopicMessage=null, forumTopicCreated=null, forumTopicClosed=null, forumTopicReopened=null, forumTopicEdited=null, generalForumTopicHidden=null, generalForumTopicUnhidden=null, writeAccessAllowed=null, hasMediaSpoiler=null, userShared=null, chatShared=null), inlineQuery=null, chosenInlineQuery=null, callbackQuery=null, editedMessage=null, channelPost=null, editedChannelPost=null, shippingQuery=null, preCheckoutQuery=null, poll=null, pollAnswer=null, myChatMember=null, chatMember=null, chatJoinRequest=null)
-        if (isSettingsChanged()==true && !settings.equals(null)) {
+        if (isSettingsChanged()==true && !settings.equals(null) ) {
             if (!(savedSettings == null))
                 savedSettings.writeSettingsToFile();
             setSettingsChanged(false);
