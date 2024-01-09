@@ -35,6 +35,12 @@ public class SavedSettings {
         }
         writeSettingsToFile();
     }
+
+    public void WriteCurrentSetting() {
+        listSettings = new ArrayList<>();
+        listSettings.add(currentSettings);
+        writeSettingsToFile();
+    }
     public UserSettings getCurrentSettings (){
         isInListSettings();
         return currentSettings;
